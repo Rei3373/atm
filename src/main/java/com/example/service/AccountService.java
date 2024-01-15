@@ -43,4 +43,16 @@ public class AccountService {
         responseAmount.setAmount(account.getAmount());
         return responseAmount;
     }
+    
+    //引き出し機能
+    public ResponseAmount withdrawAccount(Integer accountId, RequestAmount requestAmount) {
+    	Account account = accountRepository.findById(accountId).get();
+    	if(requestAmount.getAmount() <= account.getAmount()) {
+    		account.setAmount(account.getAmount() - requestAmount.getAmount());
+    		accountRepository.save(account);
+    	}
+    	ResponseAmount responseAmount = new ResponseAmount();
+    	responseAmount.setAmount(account.getAmount());
+    	return responseAmount;
+    }
 }

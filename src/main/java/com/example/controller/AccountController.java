@@ -42,4 +42,11 @@ public class AccountController {
     		@RequestBody RequestAmount requestAmount) {
     	return accountService.depositAccount(accountId, requestAmount);
     }
+    
+    //引き出し機能
+    @PostMapping("/withdraw/{account_id}")
+    public ResponseAmount withdraw(@PathVariable("account_id")Integer accountId,
+    		@RequestBody RequestAmount requestAmount) {
+    	return accountService.withdrawAccount(accountId, requestAmount);
+    }
 }
