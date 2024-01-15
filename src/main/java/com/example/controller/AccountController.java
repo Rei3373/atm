@@ -35,4 +35,11 @@ public class AccountController {
     public ResponseAmount getAmount(@PathVariable("account_id") Integer accountId) {
     	return accountService.getResponseAmount(accountId);
     }
+    
+    //預入機能
+    @PostMapping("/deposit/{account_id}")
+    public ResponseAmount deposit(@PathVariable("account_id")Integer accountId, 
+    		@RequestBody RequestAmount requestAmount) {
+    	return accountService.depositAccount(accountId, requestAmount);
+    }
 }
